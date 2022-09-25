@@ -46,13 +46,13 @@ public class Vehicule {
         int numPositions=0;
 
         if(target.getX()>= position.getX()){
-            for(int i =position.getX(); i<target.getX(); i++){
+            for(int i =position.getX(); i<=target.getX(); i++){
                 positions[numPositions] = new Position(i, getPosition().getY());
                 numPositions++;
             }
         }
         else{
-            for(int i =position.getX(); i<target.getX(); i--){
+            for(int i =position.getX(); i>=target.getX(); i--){
                 positions[numPositions] = new Position(i, getPosition().getY());
                 numPositions++;
             }
@@ -60,13 +60,13 @@ public class Vehicule {
 
 
         if(target.getY()>= position.getY()){
-            for(int i =position.getY(); i<target.getY(); i++){
+            for(int i =position.getY(); i<=target.getY(); i++){
                 positions[numPositions] = new Position(target.getX(), i);
                 numPositions++;
             }
         }
         else{
-            for(int i =position.getY(); i<target.getY(); i--){
+            for(int i =position.getY(); i>=target.getY(); i--){
                 positions[numPositions] = new Position(target.getX(), i);
                 numPositions++;
             }

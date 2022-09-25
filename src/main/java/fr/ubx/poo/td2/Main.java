@@ -40,6 +40,14 @@ public class Main extends Application {
         for(int i=0;i< listSprites.length;i++){
             view.getPane().getChildren().add(listSprites[i].getImg());
         }
+        //TestPositions
+        System.out.println(position.equals(position1));
+        System.out.println(position.equals(position2));
+        System.out.println(position.equals(position));
+        System.out.println(position.equals(listVehicules[0]));
+        System.out.println(position.equals(listVehicules[1]));
+        System.out.println(position.equals(null));
+        System.out.println(position.equals(new Position(4,4)));
 
     }
 
