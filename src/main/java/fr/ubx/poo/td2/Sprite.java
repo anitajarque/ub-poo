@@ -37,13 +37,11 @@ public class Sprite{
             for (Position pos : positionPath) {
                 path.getElements().add(new LineTo(pos.getX() * ImageResource.size + ImageResource.size / 2, pos.getY() * ImageResource.size + ImageResource.size / 2));
             }
-
             PathTransition ptr = new PathTransition();
             ptr.setDuration(Duration.millis(300 * object.distance(target)));
             ptr.setPath(path);
             ptr.setNode(getImg());
             ptr.play();
-
             ptr.setOnFinished(e -> {
                 object.move(target);
             });

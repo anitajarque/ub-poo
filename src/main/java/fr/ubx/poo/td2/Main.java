@@ -1,6 +1,6 @@
 package fr.ubx.poo.td2;
 
-import javafx.application.Application;
+import  javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,8 +12,10 @@ public class Main extends Application {
         // Creation du robot et du drone
         Position position = new Position(4,4);
         Position position1 = new Position(8, 8);
+        Position position2 = new Position(10, 8);
         listVehicules[0] = new Robot(position, 200, 2);
         listSprites[0] = new SpriteRobot((Robot) listVehicules[0]);
+        listSprites[0].animateMove(position2);
 
         listVehicules[1] = new Drone(position1, 100, 2);
         listSprites[1] = new SpriteDrone((Drone) listVehicules[1]);
@@ -34,8 +36,9 @@ public class Main extends Application {
                 }
             }
         });
+        view.getPane().getChildren().addAll( listSprites[0].getImg(), listSprites[1].getImg());
         for(int i=0;i< listSprites.length;i++){
-            view.getPane().getChildren().add( listSprites[i].getImg());
+
         }
 
     }
