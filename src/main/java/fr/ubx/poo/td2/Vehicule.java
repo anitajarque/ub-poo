@@ -1,9 +1,9 @@
 package fr.ubx.poo.td2;
 
 public class Vehicule {
-    private final double cost;
+    protected final double cost;
     protected Position position;
-    private double energy;
+    protected double energy;
 
 
     public Vehicule(Position position, double energy, double cost) {
@@ -24,8 +24,7 @@ public class Vehicule {
 
     // TODO
     public int distance(Position target) {
-        //return (int) Math.sqrt(Math.pow(position.getY() - target.getY(), 2) + Math.pow(position.getX() - target.getX(), 2));
-        return 0;
+        return (int) Math.sqrt(Math.pow(position.getY() - target.getY(), 2) + Math.pow(position.getX() - target.getX(), 2));
     }
 
         // TODO
@@ -39,6 +38,7 @@ public class Vehicule {
         this.position = target; //new Position(position.getX(), position.getY());
         System.out.println("Move completed: " + this);
     }
+
     // TODO
     public Position[] getPathTo(Position target) {
 

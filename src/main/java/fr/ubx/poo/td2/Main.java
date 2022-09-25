@@ -36,9 +36,9 @@ public class Main extends Application {
                 }
             }
         });
-        view.getPane().getChildren().addAll( listSprites[0].getImg(), listSprites[1].getImg());
+        //view.getPane().getChildren().addAll( listSprites[0].getImg(), listSprites[1].getImg());
         for(int i=0;i< listSprites.length;i++){
-
+            view.getPane().getChildren().add(listSprites[i].getImg());
         }
 
     }

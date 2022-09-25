@@ -1,6 +1,7 @@
 package fr.ubx.poo.td2;
 
 import javafx.animation.PathTransition;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -11,12 +12,13 @@ public class Sprite{
     protected Vehicule object;
     protected ImageView img;
 
-    public Sprite(Vehicule object) {
+    public Sprite(Vehicule object, Image imageRobot) {
         this.object = object;
-        img = null;
+        img = new ImageView(imageRobot);
+        updateLocation(object.getPosition());
     }
 
-    private void updateLocation(Position position) {
+    protected void updateLocation(Position position) {
         img.setX(position.getX() * ImageResource.size);
         img.setY(position.getY() * ImageResource.size);
     }
@@ -37,11 +39,13 @@ public class Sprite{
             for (Position pos : positionPath) {
                 path.getElements().add(new LineTo(pos.getX() * ImageResource.size + ImageResource.size / 2, pos.getY() * ImageResource.size + ImageResource.size / 2));
             }
+
             PathTransition ptr = new PathTransition();
             ptr.setDuration(Duration.millis(300 * object.distance(target)));
             ptr.setPath(path);
             ptr.setNode(getImg());
             ptr.play();
+
             ptr.setOnFinished(e -> {
                 object.move(target);
             });
