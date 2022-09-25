@@ -15,6 +15,9 @@ public class Main extends Application {
         //robot.getPosition().translate(10);
         SpriteRobot spriteRobot = new SpriteRobot(robot);
         spriteRobot.animateMove(position1);
+        Drone drone = new Drone(position, 100, 2);
+        SpriteDrone spriteDrone = new SpriteDrone(drone);
+        spriteDrone.animateMove(position1);
 
         // Affiche la fenetre
         View view = new View(20, 20);
@@ -28,8 +31,7 @@ public class Main extends Application {
             }
         });
 
-        view.getPane().getChildren().addAll(spriteRobot.getImg());
-
+        view.getPane().getChildren().addAll(spriteRobot.getImg(),spriteDrone.getImg());
 
     }
 
