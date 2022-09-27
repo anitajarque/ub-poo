@@ -1,5 +1,7 @@
-package fr.ubx.poo.td2;
+package model;
 
+import fr.ubx.poo.td2.Position;
+import fr.ubx.poo.td2.Vehicule;
 import javafx.animation.PathTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,8 +9,9 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
+import view.ImageResource;
 
-public class Sprite{
+public class Sprite {
     protected Vehicule object;
     protected ImageView img;
 

@@ -1,6 +1,15 @@
 package fr.ubx.poo.td2;
 
-public class Vehicule {
+import javafx.animation.PathTransition;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
+import view.ImageResource;
+
+public abstract class Vehicule {
     protected final double cost;
     protected Position position;
     protected double energy;
@@ -76,6 +85,71 @@ public class Vehicule {
             positions1[i]=positions[i];
         }
         return positions1;
+    }
+
+    public abstract static class Sprite{
+        protected Vehicule object;
+        protected ImageView img;
+
+        public Sprite(Vehicule object, Image imageRobot) {
+            this.object = object;
+            img = new ImageView(imageRobot);
+            updateLocation(object.getPosition());
+        }
+
+        protected void updateLocation(Position position) {
+            img.setX(position.getX() * ImageResource.size);
+            img.setY(position.getY() * ImageResource.size);
+        }
+
+        public ImageView getImg() {
+            return img;
+        }
+
+        public void animateMove(Position target) {
+            // Make the path movement
+            Position[] positionPath = object.getPathTo(target);
+
+            if (positionPath != null) {
+                Path path = new Path();
+
+                path.getElements().add(new MoveTo(object.getPosition().getX() * ImageResource.size + ImageResource.size / 2,
+                        object.getPosition().getY() * ImageResource.size + ImageResource.size / 2));
+                for (Position pos : positionPath) {
+                    path.getElements().add(new LineTo(pos.getX() * ImageResource.size + ImageResource.size / 2, pos.getY() * ImageResource.size + ImageResource.size / 2));
+                }
+
+                PathTransition ptr = new PathTransition();
+                ptr.setDuration(Duration.millis(300 * object.distance(target)));
+                ptr.setPath(path);
+                ptr.setNode(getImg());
+                ptr.play();
+
+                ptr.setOnFinished(e -> {
+                    object.move(target);
+                });
+            } else {
+                // Direct move
+                object.move(target);
+                updateLocation(target);
+            }
+        }
+    }
+
+    public static class SpriteDrone extends Sprite {
+
+        public SpriteDrone(Drone drone) {
+            super(drone, ImageResource.imageDrone);
+        }
+
+    }
+
+    public static class SpriteRobot extends Sprite {
+
+        public SpriteRobot(Robot robot) {
+            super(robot, ImageResource.imageRobot);
+        }
+
     }
 }
 

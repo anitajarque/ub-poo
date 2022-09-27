@@ -1,6 +1,7 @@
 package fr.ubx.poo.td2;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Position {
     private int x;
@@ -39,5 +40,12 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public int random(int width, int height){
+        Random random = new Random();
+        int r1 = random.nextInt(100);
+        int r2 = random.nextInt(100);
+        return r1 & r2;
     }
 }

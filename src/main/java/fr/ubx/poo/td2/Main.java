@@ -1,24 +1,29 @@
 package fr.ubx.poo.td2;
 
 import  javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.SpriteDecor;
+import view.ImageResource;
+import view.View;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage stage)  {
-        Vehicule listVehicules[] = new Vehicule[2];
-        Sprite listSprites[] = new Sprite[2];
+        Vehicule[] listVehicules = new Vehicule[2];
+        Vehicule.Sprite listSprites[] = new Vehicule.Sprite[2];
         // Creation du robot et du drone
         Position position = new Position(4,4);
         Position position1 = new Position(8, 8);
         Position position2 = new Position(10, 8);
         listVehicules[0] = new Robot(position, 200, 2);
-        listSprites[0] = new SpriteRobot((Robot) listVehicules[0]);
+        listSprites[0] = new Vehicule.SpriteRobot((Robot) listVehicules[0]);
         listSprites[0].animateMove(position2);
 
+
         listVehicules[1] = new Drone(position1, 100, 2);
-        listSprites[1] = new SpriteDrone((Drone) listVehicules[1]);
+        listSprites[1] = new Vehicule.SpriteDrone((Drone) listVehicules[1]);
 
         // Affiche la fenetre
         View view = new View(20, 20);
