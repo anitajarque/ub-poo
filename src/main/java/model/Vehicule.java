@@ -1,5 +1,6 @@
-package fr.ubx.poo.td2;
+package model;
 
+import fr.ubx.poo.td2.Position;
 import javafx.animation.PathTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

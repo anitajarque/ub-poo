@@ -1,6 +1,5 @@
-package model;
-import fr.ubx.poo.td2.Robot;
-import view.ImageResource;
+package view;
+import model.Robot;
 
 public class SpriteRobot extends Sprite {
 

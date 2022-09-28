@@ -1,6 +1,5 @@
-package model;
-import fr.ubx.poo.td2.Drone;
-import view.ImageResource;
+package view;
+import model.Drone;
 
 public class SpriteDrone extends Sprite {
 

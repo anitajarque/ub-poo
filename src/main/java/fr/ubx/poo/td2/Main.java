@@ -1,11 +1,15 @@
 package fr.ubx.poo.td2;
 
 import  javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.SpriteDecor;
-import view.ImageResource;
+import model.Drone;
+import model.Robot;
+import model.Vehicule;
+import view.DecorFactory;
+import view.SpriteDecor;
 import view.View;
+
+import java.util.Random;
 
 public class Main extends Application {
 
@@ -13,6 +17,7 @@ public class Main extends Application {
     public void start(Stage stage)  {
         Vehicule[] listVehicules = new Vehicule[2];
         Vehicule.Sprite listSprites[] = new Vehicule.Sprite[2];
+        SpriteDecor listSpritesDecor[] = new SpriteDecor[10];
         // Creation du robot et du drone
         Position position = new Position(4,4);
         Position position1 = new Position(8, 8);
@@ -24,6 +29,14 @@ public class Main extends Application {
 
         listVehicules[1] = new Drone(position1, 100, 2);
         listSprites[1] = new Vehicule.SpriteDrone((Drone) listVehicules[1]);
+
+        //Creation decoration
+        for(int i=0; i<listSpritesDecor.length; i++){
+            Random random = new Random();
+            int r1 = random.nextInt(3);
+            Position position3 = position.random();
+            listSpritesDecor[i]= DecorFactory.create(position3, r1);
+        }
 
         // Affiche la fenetre
         View view = new View(20, 20);
@@ -44,6 +57,9 @@ public class Main extends Application {
         //view.getPane().getChildren().addAll( listSprites[0].getImg(), listSprites[1].getImg());
         for(int i=0;i< listSprites.length;i++){
             view.getPane().getChildren().add(listSprites[i].getImg());
+        }
+        for(int i=0;i< listSpritesDecor.length;i++){
+            view.getPane().getChildren().add(listSpritesDecor[i].getImg());
         }
         //TestPositions
         System.out.println(position.equals(position1));

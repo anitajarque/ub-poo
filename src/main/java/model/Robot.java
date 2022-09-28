@@ -1,4 +1,6 @@
-package fr.ubx.poo.td2;
+package model;
+
+import fr.ubx.poo.td2.Position;
 
 public class Robot extends Vehicule{
 

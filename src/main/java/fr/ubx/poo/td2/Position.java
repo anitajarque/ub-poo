@@ -42,10 +42,11 @@ public class Position {
         return Objects.hash(x, y);
     }
 
-    public int random(int width, int height){
+    public Position random(){
         Random random = new Random();
         int r1 = random.nextInt(100);
         int r2 = random.nextInt(100);
-        return r1 & r2;
+        Position position = new Position(r1, r2);
+        return position;
     }
 }
