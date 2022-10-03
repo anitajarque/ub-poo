@@ -7,6 +7,7 @@ import model.Robot;
 import model.Vehicule;
 import view.DecorFactory;
 import view.SpriteDecor;
+import view.SpriteRock;
 import view.View;
 
 import java.util.Random;
@@ -29,11 +30,10 @@ public class Main extends Application {
 
         listVehicules[1] = new Drone(position1, 100, 2);
         listSprites[1] = new Vehicule.SpriteDrone((Drone) listVehicules[1]);
-
+        Random random = new Random();
         //Creation decoration
         for(int i=0; i<listSpritesDecor.length; i++){
-            Random random = new Random();
-            int r1 = random.nextInt(3);
+            int r1 = random.nextInt(2)+1;
             Position position3 = position.random();
             listSpritesDecor[i]= DecorFactory.create(position3, r1);
         }
@@ -58,6 +58,7 @@ public class Main extends Application {
         for(int i=0;i< listSprites.length;i++){
             view.getPane().getChildren().add(listSprites[i].getImg());
         }
+
         for(int i=0;i< listSpritesDecor.length;i++){
             view.getPane().getChildren().add(listSpritesDecor[i].getImg());
         }
